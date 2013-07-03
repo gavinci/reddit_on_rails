@@ -38,3 +38,6 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'devise'
+
+## Gemfile for Rails 3, Sinatra, and Merb
+gem 'will_paginate', '~> 3.0'
