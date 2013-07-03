@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
   def show
-    
+    @link = Link.where(id: params[:id]).first
   end
   
   def new

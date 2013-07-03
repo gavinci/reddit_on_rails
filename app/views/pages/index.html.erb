@@ -6,6 +6,7 @@
 
 <ul>
   <% @links.each do |x| %>
-    <li><%= link_to x.title, x.url %></li>
+    <li><%= link_to x.title, x.url %> | <%= link_to "comments", x %> </li>
   <% end %>
 </ul>
+
