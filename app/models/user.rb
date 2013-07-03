@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   attr_accessible :title, :body, :email, :username
   
   has_many :links
+  has_many :comments
 end
