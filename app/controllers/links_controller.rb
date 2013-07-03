@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-    def show
+  def show
     
   end
   

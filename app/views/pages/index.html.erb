@@ -1,3 +1,9 @@
 <h2>Homepage</h2>
 
 <%= link_to "Add a link", new_link_path %>
+
+<ul>
+  <% @links.each do |x| %>
+    <li><%= link_to x.title, x.url %></li>
+  <% end %>
+</ul>
