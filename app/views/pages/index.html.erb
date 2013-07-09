@@ -6,7 +6,20 @@
 
 <ul>
   <% @links.each do |x| %>
-    <li><%= link_to "+", votes_path(:vote => {:link_id => x.id, :up => true}), :method => :post %> / <%= link_to "-", votes_path(:vote => {:link_id => x.id, :up => false}), :method => :post %> | Vote count: <%= x.votes.where(up: true).count - x.votes.where(up: false).count %> | <%= link_to x.title, x.url %> | <%= link_to "comments", x %> </li>
+    <li>
+      <% if current_user && current_user.votes.where(link_id: x.id, up: true).present? %>
+        *
+      <% else %>
+        <%= link_to "+", votes_path(:vote => {:link_id => x.id, :up => true}), :method => :post %>
+      <% end %>
+        /
+      <% if current_user && current_user.votes.where(link_id: x.id, up: false).present? %>
+        *
+      <% else %>
+        <%= link_to "-", votes_path(:vote => {:link_id => x.id, :up => false}), :method => :post %>
+      <% end %>
+      | Vote count: <%= x.votes.where(up: true).count - x.votes.where(up: false).count %> | <%= link_to x.title, x.url %> | <%= link_to "comments", x %>
+      </li>
   <% end %>
 </ul>
 
