@@ -1,4 +1,6 @@
 class LinksController < ApplicationController
+  before_filter :authenticate_user!
+  
   def show
     @link = Link.where(id: params[:id]).first
     @comment = Comment.new
@@ -9,17 +11,8 @@ class LinksController < ApplicationController
   end
   
   def create
-    @link = Link.new(params[:link])
-    
-    respond_to do |format|
-      if @link.save
-        format.html { render :action => "show" }
-        format.json { render :json => @link }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @link.errors, :status => :unprocessable_entity }
-    end
+    @link = current_user.links.create(params[:link])
+    redirect_to link_path(id: @link.id)
   end
     
-  end
 end

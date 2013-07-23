@@ -1,6 +1,7 @@
 RedditOnRails::Application.routes.draw do
   devise_for :users
-
+  
+  get 'search' => 'search#index'
   root :to => "pages#index"
   resources :pages, :links, :comments, :votes
   
