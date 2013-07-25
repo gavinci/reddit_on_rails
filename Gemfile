@@ -42,3 +42,12 @@ gem 'pg'
 gem 'will_paginate', '~> 3.0'
 
 gem 'texticle', :require => 'texticle/rails'
+
+gem 'sqlite3', '1.3.5'
+
+gem 'launchy'
+
+group :test do
+  gem 'database_cleaner'
+  gem 'capybara', '~> 1.1.2'
+end
